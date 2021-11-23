@@ -80,6 +80,7 @@
 @endsection
 
 @section('footer')
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script>
   var ctx = document.getElementById("myChart");
@@ -106,12 +107,7 @@
   });
   var updateChart = function() {
     $.ajax({
-      url: "{{ route('api.inverter') }}",
-      type: 'GET',
-      dataType: 'json',
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      },
+      url: 'api/inverter',
       success: function(data) {
         myChart.data.labels = data.labels;
         myChart.data.datasets[0].data = data.data;
@@ -128,4 +124,6 @@
     updateChart();
   }, 1000);
 </script>
+
+<script src="assets/js/dashboard/dash_1.js"></script>
 @endsection

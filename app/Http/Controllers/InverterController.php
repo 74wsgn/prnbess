@@ -51,9 +51,16 @@ class InverterController extends Controller
     public function getData()
     {
         $data1 = Inverter::latest()->take(30)->get();
-        $labels = $data1 ->pluck('id');
+        $labels = $data1 ->pluck('created_at');
         $data = $data1 ->pluck('gridvoltager');
         return response()->json(compact('labels', 'data'));
+    }
+    public function getDataGraph()
+    {
+        $data1 = Inverter::latest()->get()->chunk(7);
+        $chunk = $data1[0];
+        $pwr = $chunk->pluck('gridvoltager');
+        return ['gridvoltager'=>$pwr];
     }
     /**
      * Show the form for creating a new resource.
