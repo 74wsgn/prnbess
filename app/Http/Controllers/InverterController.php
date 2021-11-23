@@ -50,8 +50,10 @@ class InverterController extends Controller
     }
     public function getData()
     {
-        $data = Inverter::latest()->get();//->toJson(JSON_PRETTY_PRINT);
-        return response($data, 200);
+        $data1 = Inverter::latest()->take(30)->get();
+        $labels = $data1 ->pluck('id');
+        $data = $data1 ->pluck('gridvoltager');
+        return response()->json(compact('labels', 'data'));
     }
     /**
      * Show the form for creating a new resource.

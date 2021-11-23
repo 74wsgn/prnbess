@@ -66,6 +66,12 @@
         <div id="chart" class="mt-5"></div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-12">
+          <h3>Last 30 speed measurements</h3>
+          <canvas id="myChart"></canvas>
+      </div>
+    </div>
 
   </div>
 </section><!-- End About Section -->
@@ -74,129 +80,52 @@
 @endsection
 
 @section('footer')
-<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script>
-  Highcharts.chart('chart', {
-    chart: {
-        type: 'area'
+  var ctx = document.getElementById("myChart");
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [],
+      datasets: [{
+        label: 'Grid Voltage R',
+        data: [],
+        borderWidth: 1
+      }]
     },
-    title: {
-        text: 'Grafik Pemakaian Baterai'
-    },
-    subtitle: {
-        text: 'Bulan: November'
-    },
-    xAxis: {
-        categories: ['1750', '1800', '1850', '1900', '1950', '1999', '2050'],
-        tickmarkPlacement: 'on',
-        title: {
-            enabled: false
-        }
-    },
-    yAxis: {
-        title: {
-            text: 'Billions'
-        },
-        labels: {
-            formatter: function () {
-                return this.value / 1000;
-            }
-        }
-    },
-    tooltip: {
-        split: true,
-        valueSuffix: ' millions'
-    },
-    plotOptions: {
-        area: {
-            stacking: 'normal',
-            lineColor: '#666666',
-            lineWidth: 1,
-            marker: {
-                lineWidth: 1,
-                lineColor: '#666666'
-            }
-        }
-    },
-    series: [{
-        name: 'Asia',
-        data: [502, 635, 809, 947, 1402, 3634, 5268]
-    }, {
-        name: 'Africa',
-        data: [106, 107, 111, 133, 221, 767, 1766]
-    }, {
-        name: 'Europe',
-        data: [163, 203, 276, 408, 547, 729, 628]
-    }, {
-        name: 'America',
-        data: [18, 31, 54, 156, 339, 818, 1201]
-    }, {
-        name: 'Oceania',
-        data: [2, 2, 2, 6, 13, 30, 46]
-    }]
-});
+    options: {
+      scales: {
+        xAxes: [],
+        yAxes: [{
+          ticks: {
+            beginAtZero:true
+          }
+        }]
+      }
+    }
+  });
+  var updateChart = function() {
+    $.ajax({
+      url: "{{ route('api.inverter') }}",
+      type: 'GET',
+      dataType: 'json',
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      success: function(data) {
+        myChart.data.labels = data.labels;
+        myChart.data.datasets[0].data = data.data;
+        myChart.update();
+      },
+      error: function(data){
+        console.log(data);
+      }
+    });
+  }
+  
+  updateChart();
+  setInterval(() => {
+    updateChart();
+  }, 1000);
 </script>
-
-<script>
-  Highcharts.chart('chart2', {
-    chart: {
-        type: 'area'
-    },
-    title: {
-        text: 'Grafik Pemakaian Baterai'
-    },
-    subtitle: {
-        text: 'Bulan: November'
-    },
-    xAxis: {
-        categories: ['1750', '1800', '1850', '1900', '1950', '1999', '2050'],
-        tickmarkPlacement: 'on',
-        title: {
-            enabled: false
-        }
-    },
-    yAxis: {
-        title: {
-            text: 'Billions'
-        },
-        labels: {
-            formatter: function () {
-                return this.value / 1000;
-            }
-        }
-    },
-    tooltip: {
-        split: true,
-        valueSuffix: ' millions'
-    },
-    plotOptions: {
-        area: {
-            stacking: 'normal',
-            lineColor: '#666666',
-            lineWidth: 1,
-            marker: {
-                lineWidth: 1,
-                lineColor: '#666666'
-            }
-        }
-    },
-    series: [{
-        name: 'Asia',
-        data: [502, 635, 809, 947, 1402, 3634, 5268]
-    }, {
-        name: 'Africa',
-        data: [106, 107, 111, 133, 221, 767, 1766]
-    }, {
-        name: 'Europe',
-        data: [163, 203, 276, 408, 547, 729, 628]
-    }, {
-        name: 'America',
-        data: [18, 31, 54, 156, 339, 818, 1201]
-    }, {
-        name: 'Oceania',
-        data: [2, 2, 2, 6, 13, 30, 46]
-    }]
-});
-</script>
-
 @endsection
