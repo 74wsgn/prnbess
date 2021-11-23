@@ -48,7 +48,11 @@ class InverterController extends Controller
             "message" => "data record added"
         ], 201);
     }
-
+    public function getData()
+    {
+        $data = Inverter::latest()->get();//->toJson(JSON_PRETTY_PRINT);
+        return response($data, 200);
+    }
     /**
      * Show the form for creating a new resource.
      *
