@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Inverter extends Model
 {
     use HasFactory;
+    
+    protected $table = 'inverters';
     protected $fillable = [
         'gridvoltageR',
         'gridpowerR',
