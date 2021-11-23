@@ -47,7 +47,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-lg-between">
 
-      <a href="index.html" class="logo me-auto me-lg-0"><img src="../resources/img/logo.png" alt="error" class="img-fluid"></a>
+      <a href="index.html" class="logo me-auto me-lg-0"><img src="/../../prnbess/resources/img/logo.png" alt="error" class="img-fluid"></a>
       <h1 class="logo me-auto me-lg-0"><a href="{{ url('/') }}">PRN BESS<span>.</span></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
 
@@ -82,11 +82,11 @@
         <ul>
           <li class="dropdown"><a class="active" href="#"><span>{{ auth()->user()->name }}</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="/dashboard"><i class="bi bi-layout-text-sidebar-reverse"></i>My Dashboard</a></li>
+              <li><a href="/prnbess/dashboard"><i class="bi bi-layout-text-sidebar-reverse"></i>My Dashboard</a></li>
               <li><hr class="dropdown-divider"></li>
               <li class="dropdown">
                 <a><i class="bi bi-box-arrow-right"></i>
-                <form action="/logout" method="post">
+                <form action="/prnbess/logout" method="post">
                   @csrf
                   <button type="submit" class="dropdown-item logout">Logout</button>
                 </form>
@@ -102,7 +102,7 @@
       @guest
       <a href="{{ url('/login') }}" class="get-started-btn scrollto">Login</a>
       @endguest
-      <a href="https://uns.ac.id/id/" class="logo me-auto me-lg-0"><img src="../resources/img/logoo.png" alt="error" class="img-fluid"></a>
+      <a href="https://uns.ac.id/id/" class="logo me-auto me-lg-0"><img src="/../../prnbess/resources/img/logoo.png" alt="error" class="img-fluid"></a>
 
     </div>
   </header><!-- End Header -->
@@ -180,6 +180,6 @@
   <script src="{{ asset('/resources/vendor/swiper/swiper-bundle.min.js') }}"></script>
 
   <!-- Template Main JS File -->
-  <script src="/resources/js/main.js"></script>
+  <script src="{{ asset('/resources/js/main.js') }}"></script>
   </body>
 </html>

@@ -66,6 +66,7 @@
   <script src="{{ asset('/resources/vendor/swiper/swiper-bundle.min.js') }}"></script>
 
   <!-- Template Main JS File -->
-  <script src="/resources/js/main.js"></script>
+  <script src="{{ asset('/resources/js/main.js') }}"></script>
+  <script src="{{ asset('/resources/js/util.js') }}"></script>
   </body>
 </html>

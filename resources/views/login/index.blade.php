@@ -17,9 +17,9 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
   @endif
-  <form action="/login" method="post">
+  <form action="/prnbess/login" method="post">
     @csrf
-    <img class="mb-3" src="../resources/img/logo.png" alt="" width="200" height="200">
+    <img class="mb-3" src="/../../prnbess/resources/img/logo.png" alt="" width="200" height="200">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
     <div class="form-floating">
@@ -38,9 +38,8 @@
 
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
   </form>
-  <small class="d-block text-center mt-3">Not registered? <a href="/register">Register Now!</a></small>
+  <small class="d-block text-center mt-3">Not registered? <a href="/prnbess/register">Register Now!</a></small>
 </main>
 
 @endsection
 
-<script src="/resources/js/util.js"></script>
