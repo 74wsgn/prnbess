@@ -17,13 +17,13 @@
         <div class="col-xl-2 col-md-4">
           <div class="icon-box">
             <i class="ri-store-line"></i>
-            <h3><a class="nav-link scrollto" href="#about">Home</a></h3>
+            <h3><a class="nav-link scrollto" href="#about">Dashboard</a></h3>
           </div>
         </div>
         <div class="col-xl-2 col-md-4">
           <div class="icon-box">
             <i class="ri-bar-chart-box-line"></i>
-            <h3><a class="nav-link scrollto" href="#services">Dashboard</a></h3>
+            <h3><a class="nav-link scrollto" href="#services">Home</a></h3>
           </div>
         </div>
         <div class="col-xl-2 col-md-4">
@@ -57,7 +57,7 @@
 
     <div class="row">
     <h1 class="mt-3 text-center">DASHBOARD</h1>
-      <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+      <!--<div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
         <h1 class="mt-3">Pemakaian Baterai</h1>  
         <div id="chart2" class="mt-5"></div>
       </div>
@@ -65,10 +65,10 @@
         <h1 class="mt-3">Pemakaian Baterai</h1>
         <div id="chart" class="mt-5"></div>
       </div>
-    </div>
+    </div>-->
     <div class="row">
       <div class="col-md-12">
-          <h3>Last 30 speed measurements</h3>
+          <h3>Nilai Grid Voltage R</h3>
           <canvas id="myChart"></canvas>
       </div>
     </div>
@@ -87,7 +87,7 @@
   var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: [],
+      labels: ['DefaultLabel'],
       datasets: [{
         label: 'Grid Voltage R',
         data: [],
@@ -96,8 +96,17 @@
     },
     options: {
       scales: {
-        xAxes: [],
+        xAxes: [{
+          scaleLabel: {
+            display:true,
+            labelString: 'Waktu'
+          }
+        }],
         yAxes: [{
+          scaleLabel: {
+            display:true,
+            labelString: 'Nilai Voltage R'
+          },
           ticks: {
             beginAtZero:true
           }
