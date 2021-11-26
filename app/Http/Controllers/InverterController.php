@@ -23,23 +23,24 @@ class InverterController extends Controller
         $data = new Inverter;
         $data->gridvoltager = $request->gridVoltageR;
         $data->gridpowerr = $request->gridpowerR;
+        $data->gridfreqr = $request->gridFreqR;
         $data->gridcurrr = $request->gridCurrR;
         $data->acoutvolr = $request->ACOutVolR;
+        $data->acoutpowr = $request->ACOutPowR
         $data->acoutfreqr = $request->ACOutFreqR;
         $data->acoutcurrr = $request->ACOutCurrR;
-        $data->outloadcurrr = $request->OUTLoadCurrR;
+        $data->outloadperc = $request->OUTLoadPerc;
         $data->pbusvol = $request->PBusVol;
         $data->sbusvol = $request->SBusVol;
         $data->pbattvol = $request->PBattVol;
         $data->nbattvol = $request->NBattVol;
-        $data->battlecap = $request->BattleCap;
+        $data->battcap = $request->BattCap;
         $data->pvinpow1 = $request->PVInPow1;
         $data->pvinpow2 = $request->PVInPow2;
         $data->pvinpow3 = $request->PVInPow3;
         $data->pvinvol1 = $request->PVInVol1;
         $data->pvinvol2 = $request->PVInVol2;
         $data->pvinvol3 = $request->PVInVol3;
-        $data->vinvol3 = $request->VInVol3;
         $data->temp = $request->Temp;
         $data->devstatus = $request->DevStatus;
         $data->save();
