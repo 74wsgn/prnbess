@@ -26,7 +26,7 @@ class InverterController extends Controller
         $data->gridfreqr = $request->gridFreqR;
         $data->gridcurrr = $request->gridCurrR;
         $data->acoutvolr = $request->ACOutVolR;
-        $data->acoutpowr = $request->ACOutPowR
+        $data->acoutpowr = $request->ACOutPowR;
         $data->acoutfreqr = $request->ACOutFreqR;
         $data->acoutcurrr = $request->ACOutCurrR;
         $data->outloadperc = $request->OUTLoadPerc;
