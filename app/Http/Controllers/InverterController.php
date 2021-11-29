@@ -51,6 +51,14 @@ class InverterController extends Controller
     }
     public function getData()
     {
+        //$mm = strtotime(date("F"));
+        //$month = (int)date("m", $mm);
+        //$data1 = Inverter::latest()->take(30)->get();
+        //$sum = Inverter::where('gridvoltager',$gridvoltager)->whereMonth('created_at', $month)->pluck('gridvoltager')->sum()->avg();
+        //$labels = $data1 ->pluck('created_at');
+        //$data = $data1 ->pluck('gridvoltager');
+        //return response()->json(compact('labels', 'data'));
+
         $data1 = Inverter::latest()->take(30)->get();
         $labels = $data1 ->pluck('created_at');
         $data = $data1 ->pluck('gridvoltager');
