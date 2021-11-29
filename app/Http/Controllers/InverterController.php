@@ -58,10 +58,13 @@ class InverterController extends Controller
     }
     public function getDataGraph()
     {
+        $mm = strtotime(date("F"));
+        $month = (int)date("m", $mm);
+        $sum = Inverter::where('gridvoltager',$gridvoltager)->whereMonth('created_at', $month)->pluck('gridvoltager')->sum()->avg();
         $data1 = Inverter::latest()->get()->chunk(7);
         $chunk = $data1[0];
         $pwr = $chunk->pluck('gridvoltager');
-        return ['gridvoltager'=>$pwr];
+        return ['sum'=>$sum];
     }
     /**
      * Show the form for creating a new resource.
