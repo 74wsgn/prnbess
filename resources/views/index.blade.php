@@ -1,6 +1,8 @@
 @extends('layout/main')
 
 @section('title', 'PRN BESS')
+@section('home', 'nav-link scrollto active')
+@section('about', 'nav-link scrollto')
 
 @section('container')
 <section id="hero" class="d-flex align-items-center justify-content-center">
@@ -8,8 +10,8 @@
 
       <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
         <div class="col-xl-6 col-lg-8">
-          <h1>PRN BESS<span>.</span></h1>
-          <h2>Smart Monitoring & Adaptive Control</h2>
+          <h1>BESS</h1>
+          <h2>Battery Energy Storage System</h2>
         </div>
       </div>
 

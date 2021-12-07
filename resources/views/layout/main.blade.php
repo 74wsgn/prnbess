@@ -48,34 +48,48 @@
     <div class="container d-flex align-items-center justify-content-lg-between">
 
       <a href="index.html" class="logo me-auto me-lg-0"><img src="/../../prnbess/resources/img/logo.png" alt="error" class="img-fluid"></a>
-      <h1 class="logo me-auto me-lg-0"><a href="{{ url('/') }}">PRN BESS<span>.</span></a></h1>
+      <h1 class="logo me-auto me-lg-0"><a href="{{ url('/') }}">BESS</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="{{ url('/about') }}">Dashboard</a></li>
-          <li><a class="nav-link scrollto" href="{{ url('/mahasiswa') }}">Usages</a></li>
-          <li><a class="nav-link scrollto " href="{{ url('/students') }}">Cost</a></li>
-          <li><a class="nav-link scrollto" href="#team">Documentation</a></li>
+          <li><a class="@yield('home')" href="{{ url('/') }}">Home</a></li>
+          <li><a class="@yield('about')" href="{{ url('/about') }}">Dashboard</a></li>
+          <li><a class="nav-link scrollto" href="{{ url('/about') }}">Usages</a></li>
+          <li><a class="nav-link scrollto " href="{{ url('/about') }}">Cost</a></li>
+          <li><a class="nav-link scrollto" href="{{ url('/about') }}">Documentation</a></li>
           <li class="dropdown"><a href="#"><span>Team</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+              <li class="dropdown"><a href="#"><span>Power</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
+                  <li><a href="#">Anggota 1</a></li>
+                  <li><a href="#">Anggota 2</a></li>
+                  <li><a href="#">Anggota 3</a></li>
+                  <li><a href="#">Anggota 4</a></li>
+                  <li><a href="#">Anggota 5</a></li>
                 </ul>
               </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+              <li class="dropdown"><a href="#"><span>Control</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Anggota 1</a></li>
+                  <li><a href="#">Anggota 2</a></li>
+                  <li><a href="#">Anggota 3</a></li>
+                  <li><a href="#">Anggota 4</a></li>
+                  <li><a href="#">Anggota 5</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Information</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Anggota 1</a></li>
+                  <li><a href="#">Anggota 2</a></li>
+                  <li><a href="#">Anggota 3</a></li>
+                  <li><a href="#">Anggota 4</a></li>
+                  <li><a href="#">Anggota 5</a></li>
+                </ul>
+              </li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#contact">About</a></li>
+          <li><a class="nav-link scrollto" href="{{ url('/about') }}">About</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
         @auth
@@ -103,6 +117,7 @@
       <a href="{{ url('/login') }}" class="get-started-btn scrollto">Login</a>
       @endguest
       <a href="https://uns.ac.id/id/" class="logo me-auto me-lg-0"><img src="/../../prnbess/resources/img/logoo.png" alt="error" class="img-fluid"></a>
+      <a href="https://www.brin.go.id/" class="logo me-auto me-lg-0"><img src="/../../prnbess/resources/img/brin.png" alt="error" class="img-fluid"></a>
 
     </div>
   </header><!-- End Header -->
