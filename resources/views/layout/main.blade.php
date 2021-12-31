@@ -53,8 +53,8 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="@yield('home')" href="{{ url('/') }}">Home</a></li>
-          <li><a class="@yield('about')" href="{{ url('/about') }}">Dashboard</a></li>
+          <li><a class="@yield('home')" href="{{ url('/') }}">Grid</a></li>
+          <li><a class="@yield('about')" href="{{ url('/about') }}">Load</a></li>
           <li><a class="nav-link scrollto" href="{{ url('/about') }}">Usages</a></li>
           <li><a class="nav-link scrollto " href="{{ url('/about') }}">Cost</a></li>
           <li><a class="nav-link scrollto" href="{{ url('/about') }}">Documentation</a></li>

@@ -59,19 +59,29 @@ class InverterController extends Controller
         //$data = $data1 ->pluck('gridvoltager');
         //return response()->json(compact('labels', 'data'));
 
-        $data1 = Inverter::latest()->take(30)->get();
+        $data1 = Inverter::latest()->take(5)->get();
         $labels = $data1 ->pluck('created_at');
-        $data = $data1 ->pluck('gridvoltager');
-        return response()->json(compact('labels', 'data'));
+        $datagp = $data1 ->pluck('gridpowerr');
+        $datalp = $data1 ->pluck('acoutpowr');
+        //$databp = $data1 ->pluck('battcap');
+        /*$datapvp = $data1 ->pluck('pvinpow1');*/
+        return response()->json(compact('labels', 'datagp', 'datalp'));
     }
+    /*public function getData2()
+    {
+        $data2 = Inverter::latest()->take(30)->get();
+        $labels2 = $data2 ->pluck('created_at');
+        $dataa = $data2 ->pluck('pvinpow1');
+        return response()->json(compact('labels2', 'dataa'));
+    }*/
     public function getDataGraph()
     {
         $mm = strtotime(date("F"));
         $month = (int)date("m", $mm);
-        $sum = Inverter::where('gridvoltager',$gridvoltager)->whereMonth('created_at', $month)->pluck('gridvoltager')->sum()->avg();
+        $sum = Inverter::where('gridpowerr',$gridpowerr)->whereMonth('created_at', $month)->pluck('gridpowerr')->sum()->avg();
         $data1 = Inverter::latest()->get()->chunk(7);
         $chunk = $data1[0];
-        $pwr = $chunk->pluck('gridvoltager');
+        $pwr = $chunk->pluck('gridpowerr');
         return ['sum'=>$sum];
     }
     /**

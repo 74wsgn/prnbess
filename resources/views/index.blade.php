@@ -70,7 +70,7 @@
     </div>-->
     <div class="row">
       <div class="col-md-12">
-          <h3>Nilai Grid Voltage R</h3>
+          <h3>Nilai Grid Power</h3>
           <canvas id="myChart"></canvas>
       </div>
     </div>
@@ -84,7 +84,7 @@
 @section('footer')
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<script>
+<!--<script>
   //const longLabels = [myChart.data.labels];
   //const labelsAdjusted = longLabels.map(label => label.split(' '));
   //console.log(labelsAdjusted)
@@ -95,7 +95,7 @@
     data: {
       labels: ['DefaultLabel'],
       datasets: [{
-        label: 'Grid Voltage R',
+        label: 'Grid Power R',
         backgroundColor: ['rgba(255, 26, 104, 0.2)'],
         data: [],
         borderWidth: 1
@@ -119,7 +119,7 @@
         yAxes: [{
           scaleLabel: {
             display:true,
-            labelString: 'Nilai Voltage R'
+            labelString: 'Nilai Power Grid'
           },
           ticks: {
             beginAtZero:true
@@ -133,7 +133,70 @@
       url: 'api/inverter',
       success: function(data) {
         myChart.data.labels = data.labels;
-        myChart.data.datasets[0].data = data.data;
+        myChart.data.datasets[0].data = data.datagp;
+        myChart.update();
+      },
+      error: function(data){
+        console.log(data);
+      }
+    });
+  }
+  
+  updateChart();
+  setInterval(() => {
+    updateChart();
+  }, 1000);
+</script>
+
+<script src="assets/js/dashboard/dash_1.js"></script>-->
+
+<!-- SCRIPT 2-->
+
+<script>
+  //const longLabels = [myChart.data.labels];
+  //const labelsAdjusted = longLabels.map(label => label.split(' '));
+  //console.log(labelsAdjusted)
+
+  var ctx = document.getElementById("myChart");
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['DefaultLabel'],
+      datasets: [{
+        label: 'Grid Power R',
+        backgroundColor: ['rgba(255, 26, 104, 0.2)'],
+        data: [],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        xAxes: [{
+          scaleLabel: {
+            display:true,
+            labelString: 'Waktu'
+          }
+        }],
+        yAxes: [{
+          min: 0,
+          max: 100,
+          scaleLabel: {
+            display:true,
+            labelString: 'Nilai Power Grid'
+          },
+          ticks: {
+            beginAtZero:true
+          }
+        }]
+      }
+    }
+  });
+  var updateChart = function() {
+    $.ajax({
+      url: 'api/inverter',
+      success: function(data) {
+        myChart.data.labels = data.labels;
+        myChart.data.datasets[0].data = data.datagp;
         myChart.update();
       },
       error: function(data){
@@ -149,4 +212,5 @@
 </script>
 
 <script src="assets/js/dashboard/dash_1.js"></script>
+
 @endsection
