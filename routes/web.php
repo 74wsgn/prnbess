@@ -31,6 +31,9 @@ use App\Http\Controllers\ChartController;
 
 Route::get('/', [PagesController::class, 'home']);
 Route::get('/about', [PagesController::class, 'about']);
+Route::get('/battery', [PagesController::class, 'battery']);
+Route::get('/peve', [PagesController::class, 'peve']);
+Route::get('/tba', [PagesController::class, 'tba']);
 
 Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
 

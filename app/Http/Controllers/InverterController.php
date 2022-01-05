@@ -63,9 +63,9 @@ class InverterController extends Controller
         $labels = $data1 ->pluck('created_at');
         $datagp = $data1 ->pluck('gridpowerr');
         $datalp = $data1 ->pluck('acoutpowr');
-        //$databp = $data1 ->pluck('battcap');
-        /*$datapvp = $data1 ->pluck('pvinpow1');*/
-        return response()->json(compact('labels', 'datagp', 'datalp'));
+        $databp = $data1 ->pluck('battcap');
+        $datapvp = $data1 ->pluck('pvinpow1');
+        return response()->json(compact('labels', 'datagp', 'datalp', 'databp', 'datapvp'));
     }
     /*public function getData2()
     {

@@ -55,9 +55,9 @@
         <ul>
           <li><a class="@yield('home')" href="{{ url('/') }}">Grid</a></li>
           <li><a class="@yield('about')" href="{{ url('/about') }}">Load</a></li>
-          <li><a class="nav-link scrollto" href="{{ url('/about') }}">Usages</a></li>
-          <li><a class="nav-link scrollto " href="{{ url('/about') }}">Cost</a></li>
-          <li><a class="nav-link scrollto" href="{{ url('/about') }}">Documentation</a></li>
+          <li><a class="@yield('usages')" href="{{ url('/battery') }}">Battery</a></li>
+          <li><a class="@yield('peve')" href="{{ url('/peve') }}">PV</a></li>
+          <li><a class="nav-link scrollto" href="{{ url('/tba') }}">Documentation</a></li>
           <li class="dropdown"><a href="#"><span>Team</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li class="dropdown"><a href="#"><span>Power</span> <i class="bi bi-chevron-right"></i></a>
@@ -89,7 +89,7 @@
               </li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="{{ url('/about') }}">About</a></li>
+          <li><a class="nav-link scrollto" href="{{ url('/tba') }}">About</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
         @auth

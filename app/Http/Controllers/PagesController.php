@@ -13,6 +13,21 @@ class PagesController extends Controller
 
     public function about()
     {
-        return view('about', ['nama' => 'Wisanggeni Tito']);
+        return view('about');
+    }
+
+    public function battery()
+    {
+        return view('battery');
+    }
+    
+    public function peve()
+    {
+        return view('peve');
+    }
+
+    public function tba()
+    {
+        return view('tba');
     }
 }

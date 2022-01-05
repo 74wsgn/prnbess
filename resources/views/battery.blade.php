@@ -1,9 +1,9 @@
 @extends('layout.main')
 
-@section('title', 'BESS - Load')
+@section('title', 'BESS - Battery')
 @section('home', 'nav-link scrollto')
-@section('about', 'nav-link scrollto active')
-@section('usages', 'nav-link scrollto')
+@section('about', 'nav-link scrollto')
+@section('usages', 'nav-link scrollto active')
 @section('peve', 'nav-link scrollto')
 
 @section('container')
@@ -72,8 +72,8 @@
     </div>-->
     <div class="row">
       <div class="col-md-12">
-          <h3>Nilai Load Power</h3>
-          <canvas id="myChart2"></canvas>
+          <h3>Nilai Battery Power</h3>
+          <canvas id="myChart3"></canvas>
       </div>
     </div>
 
@@ -91,14 +91,14 @@
   //const labelsAdjusted = longLabels.map(label => label.split(' '));
   //console.log(labelsAdjusted)
 
-  var ctx2 = document.getElementById("myChart2");
-  var myChart2 = new Chart(ctx2, {
+  var ctx2 = document.getElementById("myChart3");
+  var myChart3 = new Chart(ctx2, {
     type: 'line',
     data: {
       labels: ['DefaultLabel'],
       datasets: [{
-        label: 'Load Power R',
-        backgroundColor: ['rgba(26, 255, 104, 0.2)'],
+        label: 'Battery Power',
+        backgroundColor: ['rgba(26, 104, 255, 0.2)'],
         data: [],
         borderWidth: 1
       }]
@@ -121,7 +121,7 @@
         yAxes: [{
           scaleLabel: {
             display:true,
-            labelString: 'Nilai Power Load '
+            labelString: 'Nilai Power Baterai '
           },
           ticks: {
             beginAtZero:true
@@ -130,13 +130,13 @@
       }
     }
   });
-  var updateChart2 = function() {
+  var updateChart3 = function() {
     $.ajax({
       url: 'api/inverter',
       success: function(data) {
-        myChart2.data.labels = data.labels;
-        myChart2.data.datasets[0].data = data.datalp;
-        myChart2.update();
+        myChart3.data.labels = data.labels;
+        myChart3.data.datasets[0].data = data.databp;
+        myChart3.update();
       },
       error: function(data){
         console.log(data);
@@ -144,9 +144,9 @@
     });
   }
   
-  updateChart2();
+  updateChart3();
   setInterval(() => {
-    updateChart2();
+    updateChart3();
   }, 1000);
 </script>
 

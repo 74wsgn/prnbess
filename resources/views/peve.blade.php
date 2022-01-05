@@ -1,10 +1,10 @@
 @extends('layout.main')
 
-@section('title', 'BESS - Load')
+@section('title', 'BESS - Battery')
 @section('home', 'nav-link scrollto')
-@section('about', 'nav-link scrollto active')
+@section('about', 'nav-link scrollto')
 @section('usages', 'nav-link scrollto')
-@section('peve', 'nav-link scrollto')
+@section('peve', 'nav-link scrollto active')
 
 @section('container')
 <section id="hero" class="d-flex align-items-center justify-content-center">
@@ -60,7 +60,7 @@
   <div class="container" data-aos="fade-up">
 
     <div class="row">
-    <h1 class="mt-3 text-center">DASHBOARD</h1>
+    <h1 class="mt-3 text-center">PV</h1>
       <!--<div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
         <h1 class="mt-3">Pemakaian Baterai</h1>  
         <div id="chart2" class="mt-5"></div>
@@ -72,8 +72,8 @@
     </div>-->
     <div class="row">
       <div class="col-md-12">
-          <h3>Nilai Load Power</h3>
-          <canvas id="myChart2"></canvas>
+          <h3>Nilai PV Power</h3>
+          <canvas id="myChart4"></canvas>
       </div>
     </div>
 
@@ -91,14 +91,14 @@
   //const labelsAdjusted = longLabels.map(label => label.split(' '));
   //console.log(labelsAdjusted)
 
-  var ctx2 = document.getElementById("myChart2");
-  var myChart2 = new Chart(ctx2, {
+  var ctx2 = document.getElementById("myChart4");
+  var myChart4 = new Chart(ctx2, {
     type: 'line',
     data: {
       labels: ['DefaultLabel'],
       datasets: [{
-        label: 'Load Power R',
-        backgroundColor: ['rgba(26, 255, 104, 0.2)'],
+        label: 'PV Power',
+        backgroundColor: ['rgba(251, 163, 26, 0.2)'],
         data: [],
         borderWidth: 1
       }]
@@ -121,7 +121,7 @@
         yAxes: [{
           scaleLabel: {
             display:true,
-            labelString: 'Nilai Power Load '
+            labelString: 'Nilai Power PV '
           },
           ticks: {
             beginAtZero:true
@@ -130,13 +130,13 @@
       }
     }
   });
-  var updateChart2 = function() {
+  var updateChart4 = function() {
     $.ajax({
       url: 'api/inverter',
       success: function(data) {
-        myChart2.data.labels = data.labels;
-        myChart2.data.datasets[0].data = data.datalp;
-        myChart2.update();
+        myChart4.data.labels = data.labels;
+        myChart4.data.datasets[0].data = data.datapvp;
+        myChart4.update();
       },
       error: function(data){
         console.log(data);
@@ -144,9 +144,9 @@
     });
   }
   
-  updateChart2();
+  updateChart4();
   setInterval(() => {
-    updateChart2();
+    updateChart4();
   }, 1000);
 </script>
 

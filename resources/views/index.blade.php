@@ -1,8 +1,10 @@
 @extends('layout/main')
 
-@section('title', 'PRN BESS')
+@section('title', 'BESS - Grid')
 @section('home', 'nav-link scrollto active')
 @section('about', 'nav-link scrollto')
+@section('usages', 'nav-link scrollto')
+@section('peve', 'nav-link scrollto')
 
 @section('container')
 <section id="hero" class="d-flex align-items-center justify-content-center">
